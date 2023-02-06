@@ -5,13 +5,16 @@ from matplotlib import cm
 
 if __name__ == "__main__":
 
+    # Read in CSV file and reformat columns
     netflix_data = pd.read_csv(r"/Users/bongo/Documents/DS_4200/Hw3/hw-03-nicholas-john/NetFlix.csv")
     netflix_data['date_added'] = pd.to_datetime(netflix_data['date_added'])
 
+    # Filter out columns that were not neccesary for data analysis
     netflix_data = netflix_data.loc[netflix_data['type'] == 'Movie']
     netflix_data = netflix_data.loc[netflix_data['date_added'] > datetime.datetime(2021, 1, 1)]
     netflix_data.reset_index(inplace=True)
 
+    # Select columns that were going to be analyzed
     date = netflix_data['date_added']
     run_time = netflix_data['duration']
     ratings = netflix_data['rating']
@@ -22,6 +25,7 @@ if __name__ == "__main__":
 
     fig, ax = plt.subplots()
 
+    # Create visual and show it using matplotlib
     scatter = ax.scatter(data=netflix_data, x='date_added', y='duration', color=color_lst)
     markers = [plt.Line2D([0, 0], [0, 0], color=color, marker='o', linestyle='') for color in color_dict.values()]
     plt.legend(markers, color_dict.keys(), numpoints=1, title='Movie Rating', loc='upper left')
