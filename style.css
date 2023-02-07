@@ -1,27 +1,28 @@
 body {
-	font-family: arial;
+    font-family: arial;
 }
 
-h2 { 
+h2, h1{ 
     text-align: center;
 }
 
 img{
     max-height: 100%;
-    max-width: 48vw;
+    max-width: 45vw;
   }
 
 .row {
     display: flex;  
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    align-content: center;
     flex-wrap:wrap;
+    margin-left: 35px;
+    margin-bottom: 25px;
   }
   
-  .column {
+.column {
     display:flex;
     flex-direction:column;
     flex:50%;
-  }
+    justify-content: none;
+}
